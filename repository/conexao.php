@@ -11,3 +11,5 @@
     if($conexao->connect_error){
         die("Connection failed: " . $conn->connect_error);
     }
+
+    $caminho = "http://localhost/FWPhp";

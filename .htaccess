@@ -1,9 +1,42 @@
-RewriteEngine on
+<Files .htaccess>
+  Order deny,allow
+  deny from all
+</Files>
+
+RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?a=$1
 
 
-    RewriteRule ^post-ver\/([0-9A-z\-\.]+)\/([0-9]+)\/?$ index.php?a=post-ver&b=$1&c=$2
-    RewriteRule ^posts\/([0-9A-z\-\.]+)\/([0-9]+)\/?$ index.php?a=posts&b=$1&c=$2
-    RewriteRule ^posts\/?$ index.php?a=posts
+##URLs
+
+	#Busca
+  RewriteRule ^busca\/(.*)\/([0-9A-z\-\.]+)\/([0-9]+)\/?$ index.php?a=busca&b=$1&c=$2&d=$3
+  RewriteRule ^busca\/(.*)\/?$ index.php?a=busca&b=$1
+
+    #Posts
+      RewriteRule ^postagem-ver\/([0-9A-z\-\.]+)\/([0-9]+)\/?$ index.php?a=postagem-ver&b=$1&c=$2
+      RewriteRule ^postagens\/([0-9A-z\-\.]+)\/([0-9]+)\/?$ index.php?a=postagens&b=$1&c=$2
+      RewriteRule ^postagens\/?$ index.php?a=postagens
+      
+      #Estaticas
+      RewriteRule ^busca\/?$ index.php?a=busca
+      RewriteRule ^categorias\/([0-9A-z\-\.]+)\/([0-9]+)\/?$ index.php?a=categorias&b=$1&c=$2
+
+##Fim URLs
+
+
+ErrorDocument  404  /404.php
+ErrorDocument  400 default
+
+
+#Colocar "www" nas urls
+
+#Para funcionar na uolhost habilite essa regra: Options All
+Options +SymLinksIfOwnerMatch
+rewritecond %{http_host} ^novosite.com.br [NC]
+rewriterule ^(.*)$ http://www.%{http_host} [r=301,NC]
+
+#Impedir Listagem
+
+IndexIgnore *

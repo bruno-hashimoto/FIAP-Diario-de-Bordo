@@ -1,9 +1,5 @@
 <?php 
 
-function pegarUrl() {
-    return $_GET['a'] ?? '';
-}
-
 function urllimpa($str)
 {
     $str   = strip_tags(html_entity_decode(trim($str)));

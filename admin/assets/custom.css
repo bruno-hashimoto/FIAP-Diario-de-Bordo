@@ -1,0 +1,12 @@
+.inserir form {
+  width: 50%;
+}
+
+.inserir form label {
+  padding: 15px 0;
+}
+
+.inserir form label input, .inserir form label select {
+  width: 100%;
+}
+/*# sourceMappingURL=custom.css.map */
